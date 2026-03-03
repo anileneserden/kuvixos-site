@@ -3,10 +3,430 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>KuvixOS</title>
+  <meta name="description" content="KuvixOS — from-scratch, deneysel işletim sistemi. Kernel, WM, UI toolkit, KVXFS, KEF uygulama formatı." />
+  <title>KuvixOS — From Scratch OS</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- İstersen fontu kaldırıp sistem fontuna dönebilirsin -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./assets/style.css" />
+  <link rel="icon" href="./assets/img/favicon.png" />
 </head>
+
 <body>
-  <h1>KuvixOS</h1>
-  <p>Yakında: indirme, roadmap, ekran görüntüleri.</p>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#top" aria-label="KuvixOS ana sayfa">
+        <span class="brand-dot"></span>
+        <span class="brand-text">Kuvix<span class="brand-accent">OS</span></span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="#features">Özellikler</a>
+        <a href="#screenshots">Görüntüler</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#download">İndir</a>
+        <a href="#devlog">Devlog</a>
+      </nav>
+
+      <div class="topbar-actions">
+        <a class="btn btn-ghost" href="#download">Download</a>
+        <button class="hamburger" id="hamburger" aria-label="Menüyü aç/kapat" aria-controls="nav" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-left">
+          <div class="pill">
+            <span class="pill-dot"></span>
+            <span>Deneysel • From-scratch • x86_64</span>
+          </div>
+
+          <h1>
+            Modern bir OS’yi
+            <span class="gradient-text">sıfırdan</span>
+            inşa ediyorum.
+          </h1>
+
+          <p class="lead">
+            KuvixOS; kendi kernel’i, window manager’ı, UI toolkit’i, dosya sistemleri ve
+            <b>KEF</b> uygulama formatıyla geliştirilen deneysel bir işletim sistemi projesi.
+          </p>
+
+          <div class="hero-ctas">
+            <!-- Buraya GitHub repo linkini koy -->
+            <a class="btn btn-primary" href="https://github.com/anileneserden" target="_blank" rel="noreferrer">
+              GitHub
+              <span class="btn-arrow">→</span>
+            </a>
+            <a class="btn btn-ghost" href="#features">Neler var?</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <div class="stat-k">Kernel</div>
+              <div class="stat-v">C / ASM</div>
+            </div>
+            <div class="stat">
+              <div class="stat-k">UI</div>
+              <div class="stat-v">WM + Toolkit</div>
+            </div>
+            <div class="stat">
+              <div class="stat-k">Apps</div>
+              <div class="stat-v">KEF Host</div>
+            </div>
+          </div>
+
+          <div class="note">
+            <span class="note-badge">Not</span>
+            <span>
+              Şu an odak: masaüstü deneyimi, dosya erişimi, KEF ekosistemi ve temel uygulamalar.
+            </span>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="frame">
+            <!-- İstersen buraya hero görseli koy -->
+            <div class="frame-inner">
+              <div class="window">
+                <div class="window-bar">
+                  <span class="win-dot red"></span>
+                  <span class="win-dot yellow"></span>
+                  <span class="win-dot green"></span>
+                  <span class="window-title">KuvixOS • Demo</span>
+                </div>
+                <div class="window-body">
+                  <div class="terminal">
+                    <div class="line"><span class="prompt">kuvix</span>: booting...</div>
+                    <div class="line dim">[WM] init ok</div>
+                    <div class="line dim">[VFS] mounted</div>
+                    <div class="line dim">[KEF] host ready</div>
+                    <div class="line"><span class="ok">✓</span> desktop session started</div>
+                    <div class="line"><span class="cursor">▍</span></div>
+                  </div>
+
+                  <div class="mini-cards">
+                    <div class="mini-card">
+                      <div class="mini-title">KVXFS</div>
+                      <div class="mini-desc">Kendi dosya sistemi denemeleri</div>
+                    </div>
+                    <div class="mini-card">
+                      <div class="mini-title">KEF</div>
+                      <div class="mini-desc">Uygulama formatı + host</div>
+                    </div>
+                    <div class="mini-card">
+                      <div class="mini-title">UI Toolkit</div>
+                      <div class="mini-desc">Widget’lar, theme, layout</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="glow"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-head">
+          <h2>Özellikler</h2>
+          <p>KuvixOS’un ana bileşenleri ve hedeflediği kullanıcı deneyimi.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon">⚙️</div>
+            <h3>Kendi Kernel</h3>
+            <p>Temel scheduler, sürücüler, bellek yönetimi ve sistem servisleri üzerine deneysel geliştirme.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🪟</div>
+            <h3>Window Manager</h3>
+            <p>Pencere chrome, titlebar, resize/drag ve sahne-temelli çizim yaklaşımı.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🧩</div>
+            <h3>UI Toolkit</h3>
+            <p>Button, Label, Input, Dialog; tema/ikon sistemi ve ileride layout manager hedefi.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">📦</div>
+            <h3>KEF Uygulama Formatı</h3>
+            <p>KEF host üzerinden uygulama çalıştırma; app ekosistemi için temel taş.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🗂️</div>
+            <h3>VFS + FS Deneyleri</h3>
+            <p>VFS katmanı, KVXFS/ToyFS ve FAT deneyleri; dosya erişimi ve paket yapıları için zemin.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🧪</div>
+            <h3>VM Odaklı Geliştirme</h3>
+            <p>QEMU üzerinde hızlı iterasyon: boot, UI, input, uygulama akışı, debug log.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREENSHOTS -->
+    <section class="section" id="screenshots">
+      <div class="container">
+        <div class="section-head">
+          <h2>Görüntüler</h2>
+          <p>Buraya gerçek screenshot eklediğinde site çok daha “pro” görünür.</p>
+        </div>
+
+        <div class="shots">
+          <a class="shot" href="./assets/img/screenshot-1.png" target="_blank" rel="noreferrer">
+            <div class="shot-top">
+              <span class="tag">Desktop</span>
+              <span class="hint">Aç</span>
+            </div>
+            <div class="shot-img placeholder">
+              <span>assets/img/screenshot-1.png</span>
+            </div>
+          </a>
+
+          <a class="shot" href="./assets/img/screenshot-2.png" target="_blank" rel="noreferrer">
+            <div class="shot-top">
+              <span class="tag">Notepad</span>
+              <span class="hint">Aç</span>
+            </div>
+            <div class="shot-img placeholder">
+              <span>assets/img/screenshot-2.png</span>
+            </div>
+          </a>
+
+          <a class="shot" href="./assets/img/screenshot-3.png" target="_blank" rel="noreferrer">
+            <div class="shot-top">
+              <span class="tag">KEF App</span>
+              <span class="hint">Aç</span>
+            </div>
+            <div class="shot-img placeholder">
+              <span>assets/img/screenshot-3.png</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section class="section" id="roadmap">
+      <div class="container">
+        <div class="section-head">
+          <h2>Roadmap</h2>
+          <p>İstersen bunu GitHub milestone’larına göre güncelleyebilirsin.</p>
+        </div>
+
+        <div class="timeline">
+          <div class="t-item done">
+            <div class="t-dot"></div>
+            <div class="t-body">
+              <div class="t-title">Çekirdek UI + WM temelleri</div>
+              <div class="t-desc">Pencere çizimi, input, masaüstü oturumu iskeleti.</div>
+            </div>
+          </div>
+
+          <div class="t-item done">
+            <div class="t-dot"></div>
+            <div class="t-body">
+              <div class="t-title">VFS entegrasyonu + FS denemeleri</div>
+              <div class="t-desc">KVXFS/ToyFS/FAT deneyleri ile dosya erişimi.</div>
+            </div>
+          </div>
+
+          <div class="t-item now">
+            <div class="t-dot"></div>
+            <div class="t-body">
+              <div class="t-title">KEF host + widget seti geliştirme</div>
+              <div class="t-desc">Daha iyi layout, event sistemi, tema/ikon pipeline.</div>
+            </div>
+          </div>
+
+          <div class="t-item">
+            <div class="t-dot"></div>
+            <div class="t-body">
+              <div class="t-title">Paket sistemi / app dağıtımı</div>
+              <div class="t-desc">Basit bir paket formatı + imzalama/checksum + store altyapısına zemin.</div>
+            </div>
+          </div>
+
+          <div class="t-item">
+            <div class="t-dot"></div>
+            <div class="t-body">
+              <div class="t-title">Ağ (network) + temel browser denemeleri</div>
+              <div class="t-desc">Network stack ve basit HTML renderer prototipleri.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOWNLOAD -->
+    <section class="section" id="download">
+      <div class="container">
+        <div class="section-head">
+          <h2>Download</h2>
+          <p>
+            Bu sürüm <b>Developer Preview</b> niteliğindedir. En iyi deneyim için VM (QEMU/VirtualBox) önerilir.
+          </p>
+        </div>
+
+        <div class="dl-grid">
+          <div class="dl-card">
+            <div class="dl-title">KuvixOS ISO</div>
+            <div class="dl-sub">Dosya: <code>KuvixOS.iso</code></div>
+
+            <div class="dl-actions">
+              <a class="btn btn-primary" href="./downloads/KuvixOS.iso" download>
+                ISO İndir <span class="btn-arrow">→</span>
+              </a>
+              <a class="btn btn-ghost" href="./downloads/SHA256SUMS.txt" download>
+                SHA256SUMS.txt
+              </a>
+            </div>
+
+            <div class="dl-meta">
+              <div class="dl-pill"><span class="dot ok"></span>HTTPS</div>
+              <div class="dl-pill"><span class="dot warn"></span>Preview Build</div>
+              <div class="dl-pill"><span class="dot"></span>x86_64</div>
+            </div>
+
+            <div class="dl-warn">
+              <b>Uyarı:</b> Gerçek donanımda çalışmayabilir. Lütfen önce VM’de test edin.
+            </div>
+          </div>
+
+          <div class="dl-card">
+            <div class="dl-title">Doğrulama (SHA256)</div>
+            <div class="dl-sub">ISO’nun bozulmadığını / değiştirilmediğini kontrol et.</div>
+
+            <div class="codebox">
+              <div class="codebox-top">
+                <span>Linux / macOS</span>
+                <button class="copy-btn" type="button" data-copy>cp</button>
+              </div>
+              <pre><code>cd downloads
+            sha256sum -c SHA256SUMS.txt</code></pre>
+            </div>
+
+            <div class="codebox" style="margin-top:12px;">
+              <div class="codebox-top">
+                <span>Windows (PowerShell)</span>
+                <button class="copy-btn" type="button" data-copy>cp</button>
+              </div>
+              <pre><code>Get-FileHash .\KuvixOS.iso -Algorithm SHA256</code></pre>
+            </div>
+
+            <div class="hashline">
+              <span class="hashlabel">Beklenen SHA256:</span>
+              <code class="hash">1e8826b63b8980e46b041ba09ff2b87165337e41e8afe8560ce7cc664d571591</code>
+            </div>
+          </div>
+
+          <div class="dl-card">
+            <div class="dl-title">VM’de Çalıştır (QEMU örneği)</div>
+            <div class="dl-sub">Hızlı test için (Linux).</div>
+
+            <div class="codebox">
+              <div class="codebox-top">
+                <span>QEMU</span>
+                <button class="copy-btn" type="button" data-copy>cp</button>
+              </div>
+              <pre><code>qemu-system-x86_64 \
+              -m 1024 \
+              -cdrom downloads/KuvixOS.iso \
+              -boot d</code></pre>
+            </div>
+
+            <div class="dl-small">
+              <!--İstersen daha sonra burada “VirtualBox kurulum adımı” da ekleriz.-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEVLOG -->
+    <section class="section" id="devlog">
+      <div class="container">
+        <div class="section-head">
+          <h2>Devlog</h2>
+          <p>Kısa kısa “bugün ne yaptım?” postları bile projeyi çok güçlü gösterir.</p>
+        </div>
+
+        <div class="posts">
+          <article class="post">
+            <div class="post-meta">
+              <span class="chip">Güncelleme</span>
+              <span class="date">Son: burayı sen doldur</span>
+            </div>
+            <h3>KEF host: widget sayacı + pencere ölçülendirme</h3>
+            <p>KEF uygulamalarının daha stabil açılması için WM resize/dirt region iyileştirmeleri.</p>
+          </article>
+
+          <article class="post">
+            <div class="post-meta">
+              <span class="chip">UI</span>
+              <span class="date">Son: burayı sen doldur</span>
+            </div>
+            <h3>Context menu invalidation fix</h3>
+            <p>Menü tıklamalarında redraw zorunluluğu ve frame’in garanti çizilmesi.</p>
+          </article>
+
+          <article class="post">
+            <div class="post-meta">
+              <span class="chip">FS</span>
+              <span class="date">Son: burayı sen doldur</span>
+            </div>
+            <h3>VFS okuma akışı sadeleştirme</h3>
+            <p>vfs_read_all gibi helper’larla uygulamalarda dosya okumayı kolaylaştırma.</p>
+          </article>
+        </div>
+
+        <div class="links">
+          <a class="link" href="https://github.com/anileneserden" target="_blank" rel="noreferrer">GitHub Profili →</a>
+          <!-- repo linkini buraya da koy -->
+          <a class="link" href="https://github.com/anileneserden/KuvixOS-V2" target="_blank" rel="noreferrer">KuvixOS Repo →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand">KuvixOS</div>
+        <div class="footer-text">Deneysel from-scratch OS projesi • © <span id="year"></span></div>
+      </div>
+
+      <div class="footer-links">
+        <a href="#features">Özellikler</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#download">İndir</a>
+        <a href="#top">Yukarı</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./assets/app.js"></script>
 </body>
 </html>
