@@ -1,0 +1,11 @@
+diff --git a/downloads/KuvixOS.iso b/downloads/KuvixOS.iso
+deleted file mode 100644
+index 58d1665..0000000
+Binary files a/downloads/KuvixOS.iso and /dev/null differ
+diff --git a/downloads/SHA256SUMS.txt b/downloads/SHA256SUMS.txt
+deleted file mode 100644
+index 215d42b..0000000
+--- a/downloads/SHA256SUMS.txt
++++ /dev/null
+@@ -1 +0,0 @@
+-1e8826b63b8980e46b041ba09ff2b87165337e41e8afe8560ce7cc664d571591  KuvixOS.iso
